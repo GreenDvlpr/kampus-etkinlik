@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Etkinlik Detay - Kariyer Günleri</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kariyer Günleri - Kampüs Etkinlikleri</title>
 </head>
 <body>
-
-    <!-- Her sayfada tek h1 kuralına uygun -->
+  <header>
     <h1>Kariyer Günleri</h1>
-    
-    <!-- Menü Bağlantıları -->
     <nav>
-        <a href="index.html">Ana Sayfa</a> 
-        <a href="etkinlik-ekle.html">Ekle</a> 
-        <a href="etkinlik-guncelle.html">Güncelle</a>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+      <a href="etkinlik-ekle.html">Ekle</a>
+      <a href="etkinlik-guncelle.html">Güncelle</a>
     </nav>
+  </header>
 
-    <!-- Etkinlik İçeriği -->
+  <main>
     <article>
-        <figure>
-            <!-- Klasörde afis.jpg olmadığı için resim kırık görünecektir, bu CSS ve ek dosya olmayan bu sprint için beklenen bir durumdur -->
-            <img src="afis.jpg" alt="Etkinlik afişi">
-            <figcaption>Şekil: etkinlik afişi</figcaption>
-        </figure>
+      <figure>
+        <img src="afis.jpg" alt="Kariyer Günleri Etkinlik Afişi">
+        <figcaption>Şekil: etkinlik afişi</figcaption>
+      </figure>
 
-        <dl>
-            <dt>Tarih</dt>
-            <dd>12 Ekim, 14:00</dd>
-            
-            <dt>Yer</dt>
-            <dd>A Blok Salon</dd>
-            
-            <dt>Kontenjan</dt>
-            <dd>120</dd>
-        </dl>
+      <dl>
+        <dt>Tarih</dt>
+        <dd><time datetime="2026-10-12T14:00">12 Ekim, 14:00</time></dd>
+        <dt>Yer</dt>
+        <dd>A Blok Salon</dd>
+        <dt>Kategori</dt>
+        <dd>Seminer</dd>
+        <dt>Kontenjan</dt>
+        <dd>120</dd>
+      </dl>
 
-        <a href="index.html">Listeye dön</a>
+      <p>Mezunlarla kariyer söyleşileri ve şirket standları.</p>
+      <p><a href="etkinlikler.html">Listeye dön</a></p>
     </article>
+  </main>
 
+  <footer>
+    <p>Bekir Tuna Karamsal · 2026</p>
+  </footer>
 </body>
 </html>

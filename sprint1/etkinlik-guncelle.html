@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Etkinlik Güncelle</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlik Güncelle - Kampüs Etkinlikleri</title>
 </head>
 <body>
-
+  <header>
     <h1>Etkinlik Güncelle</h1>
-    
     <nav>
-        <a href="index.html">Ana Sayfa</a> 
-        <a href="etkinlik-ekle.html">Ekle</a> 
-        <a href="etkinlik-guncelle.html">Güncelle</a>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+      <a href="etkinlik-ekle.html">Ekle</a>
+      <a href="etkinlik-guncelle.html">Güncelle</a>
     </nav>
+  </header>
 
-    <br>
+  <main>
+    <form action="#" method="post">
+      <p>
+        <label for="etkinlik-adi">Etkinlik Adı</label><br>
+        <input type="text" id="etkinlik-adi" name="etkinlik-adi" value="Kariyer Günleri" required>
+      </p>
 
-    <form action="#" method="get">
-        <label for="etkinlikAdi">Etkinlik Adı</label><br>
-        <!-- value niteliği ile veri dolu gelir -->
-        <input type="text" id="etkinlikAdi" name="etkinlikAdi" value="Kariyer Günleri" required><br><br>
-
+      <p>
         <label for="kategori">Kategori</label><br>
         <select id="kategori" name="kategori" required>
-            <option value="Seminer" selected>Seminer</option>
-            <option value="Atolye">Atölye</option>
-        </select><br><br>
+          <option value="">Seçiniz</option>
+          <option value="Seminer" selected>Seminer</option>
+          <option value="Atölye">Atölye</option>
+          <option value="Söyleşi">Söyleşi</option>
+        </select>
+      </p>
 
+      <p>
         <label for="tarih">Tarih</label><br>
-        <input type="text" id="tarih" name="tarih" value="12.10.2026" required><br><br>
+        <input type="date" id="tarih" name="tarih" value="2026-10-12" required>
+      </p>
 
+      <p>
         <label for="aciklama">Açıklama</label><br>
-        <!-- textarea etiketinde veri, iki etiket arasına yazılır -->
-        <textarea id="aciklama" name="aciklama" required>Mezun söyleşileri</textarea><br><br>
+        <textarea id="aciklama" name="aciklama" rows="4">Mezun söyleşileri</textarea>
+      </p>
 
-        <input type="submit" value="Güncelle">
+      <p>
+        <button type="submit">Güncelle</button>
+      </p>
     </form>
+  </main>
 
+  <footer>
+    <p>Bekir Tuna Karamsal · 2026</p>
+  </footer>
 </body>
 </html>

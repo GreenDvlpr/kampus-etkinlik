@@ -1,0 +1,312 @@
+/* Bekir Tuna Karamsal — 2416501428 */
+:root {
+  --no: 2416501428;
+  --ton: 348;
+  --ton: mod(var(--no), 360);
+  --renk-ana: hsl(var(--ton) 65% 38%);
+  --renk-zemin: hsl(var(--ton) 30% 97%);
+  --font: system-ui;
+  --bosluk-m: 1rem;  --kose: 8px;
+
+  /* Yardımcı CSS değişkenleri */
+  --renk-beyaz: #ffffff;
+  --renk-metin: #1f2937;
+  --renk-metin-hafif: #4b5563;
+  --renk-kenarlik: rgba(0, 0, 0, 0.12);
+  --renk-hata: #d32f2f;
+  --bosluk-s: calc(var(--bosluk-m) * 0.5);
+  --bosluk-l: calc(var(--bosluk-m) * 1.5);
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--renk-zemin);
+  color: var(--renk-metin);
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Üst Başlık ve Gezinme Çubuğu (5 sayfada da aynı başlık ve menü) */
+.site-header {
+  background-color: var(--renk-ana);
+  color: var(--renk-beyaz);
+  padding: var(--bosluk-m);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.site-header h1 {
+  margin: 0 0 var(--bosluk-s) 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--renk-beyaz);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bosluk-m);
+  align-items: center;
+}
+
+.site-nav a {
+  color: var(--renk-beyaz);
+  text-decoration: none;
+  font-weight: 500;
+  padding: var(--bosluk-s) 0;
+  display: inline-block;
+  min-height: 44px;
+  line-height: 28px;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  text-decoration: underline;
+}
+
+/* Ana İçerik Kapsayıcısı */
+main {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: var(--bosluk-m);
+}
+
+main h2 {
+  margin-top: var(--bosluk-m);
+  margin-bottom: var(--bosluk-m);
+  color: var(--renk-metin);
+  font-size: 1.5rem;
+}
+
+.aciklama-metin {
+  margin-bottom: var(--bosluk-m);
+  color: var(--renk-metin-hafif);
+  font-size: 1.05rem;
+}
+
+/* Tablodan Karta: Grid Yapısı */
+/* Öncelik Telefon: Tek Sütun, taşma yok */
+.etkinlik-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--bosluk-m);
+  margin-bottom: var(--bosluk-m);
+}
+
+/* Geniş Ekran: Birden Fazla Sütun */
+@media (min-width: 768px) {
+  .etkinlik-grid.uc-sutun {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .etkinlik-grid.iki-sutun {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Kart Tasarımı */
+.kart {
+  background-color: var(--renk-beyaz);
+  border: 1px solid var(--renk-kenarlik);
+  border-radius: var(--kose);
+  padding: var(--bosluk-m);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.kart h3 {
+  margin-top: 0;
+  margin-bottom: var(--bosluk-s);
+  font-size: 1.25rem;
+  color: var(--renk-metin);
+}
+
+.kart p {
+  margin: 0 0 var(--bosluk-s) 0;
+  color: var(--renk-metin-hafif);
+}
+
+.kart time {
+  font-weight: 500;
+  color: var(--renk-metin);
+  display: inline-block;
+  margin-bottom: var(--bosluk-s);
+}
+
+.kart a,
+.btn-link,
+.tumunu-gor a {
+  color: var(--renk-ana);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: var(--bosluk-s);
+  min-height: 44px;
+  line-height: 44px;
+}
+
+.kart a:hover,
+.btn-link:hover,
+.tumunu-gor a:hover {
+  text-decoration: underline;
+}
+
+/* Detay Sayfası Tasarımı (Slide 4) */
+/* Afiş solda, künye (dl) sağda; telefonda alt alta */
+.detay-kapsayici {
+  background-color: var(--renk-beyaz);
+  border: 1px solid var(--renk-kenarlik);
+  border-radius: var(--kose);
+  padding: var(--bosluk-m);
+}
+
+.detay-icerik {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--bosluk-l);
+}
+
+@media (min-width: 768px) {
+  .detay-icerik {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+figure {
+  margin: 0;
+}
+
+figure img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--kose);
+  display: block;
+  border: 1px solid var(--renk-kenarlik);
+}
+
+figcaption {
+  font-size: 0.875rem;
+  color: var(--renk-metin-hafif);
+  margin-top: var(--bosluk-s);
+  font-style: italic;
+}
+
+dl {
+  margin: 0 0 var(--bosluk-m) 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--bosluk-m);
+  row-gap: var(--bosluk-s);
+}
+
+dt {
+  font-weight: 700;
+  color: var(--renk-metin);
+}
+
+dd {
+  margin: 0;
+  color: var(--renk-metin);
+}
+
+.listeye-don {
+  color: var(--renk-ana);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: var(--bosluk-m);
+  min-height: 44px;
+  line-height: 44px;
+}
+
+.listeye-don:hover {
+  text-decoration: underline;
+}
+
+/* Form Tasarımı (Slide 5, 6, 7) */
+/* Label üstte, hatalı alan kırmızı, butonlar parmakla basılır */
+.form-kart {
+  background-color: var(--renk-beyaz);
+  border: 1px solid var(--renk-kenarlik);
+  border-radius: var(--kose);
+  padding: var(--bosluk-l);
+  max-width: 600px;
+}
+
+.form-grup {
+  margin-bottom: var(--bosluk-m);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--bosluk-s);
+  font-weight: 600;
+  color: var(--renk-metin);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: var(--bosluk-s) var(--bosluk-m);
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid var(--renk-kenarlik);
+  border-radius: var(--kose);
+  background-color: var(--renk-beyaz);
+  min-height: 44px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Boş form gönderildiğinde / hatalı alanda kırmızı kenarlık */
+input:invalid:focus,
+select:invalid:focus,
+textarea:invalid:focus,
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid,
+.hatali {
+  border: 2px solid var(--renk-hata) !important;
+  outline-color: var(--renk-hata);
+}
+
+/* Buton: Parmakla basılır, en az 44px yükseklik */
+button[type="submit"] {
+  display: inline-block;
+  background-color: var(--renk-ana);
+  color: var(--renk-beyaz);
+  border: none;
+  border-radius: var(--kose);
+  padding: var(--bosluk-s) var(--bosluk-l);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 140px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+/* Alt Bilgi */
+footer {
+  text-align: center;
+  padding: var(--bosluk-l) var(--bosluk-m);
+  color: var(--renk-metin-hafif);
+  font-size: 0.9rem;
+}
