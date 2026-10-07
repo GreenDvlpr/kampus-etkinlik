@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlik Ekle - Kampüs Etkinlikleri</title>
+  <link rel="stylesheet" href="css/numaran.css">
+  <script type="module" src="js/event-form.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Etkinlik Ekle</h1>
+    <nav class="site-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+      <a href="etkinlik-ekle.html" class="aktif">Ekle</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="aciklama-metin">Yıldızlı (*) alanlar zorunludur. Bu sprintte form veri kaydetmez; sonuç aşağıda gösterilir.</p>
+
+    <section class="form-kart">
+      <form id="etkinlik-formu" novalidate>
+        <div class="form-grup">
+          <label for="ad">Etkinlik Adı *</label>
+          <input type="text" id="ad" name="ad" placeholder="Örn. Girişimcilik Söyleşisi">
+          <span id="ad-hata" class="hata-metni"></span>
+        </div>
+
+        <div class="form-grup">
+          <label for="kategori">Kategori *</label>
+          <select id="kategori" name="kategori">
+            <option value="">Seçiniz</option>
+            <option value="Seminer">Seminer</option>
+            <option value="Atölye">Atölye</option>
+            <option value="Söyleşi">Söyleşi</option>
+          </select>
+          <span id="kategori-hata" class="hata-metni"></span>
+        </div>
+
+        <div class="form-grup">
+          <label for="tarih">Tarih *</label>
+          <input type="date" id="tarih" name="tarih">
+          <span id="tarih-hata" class="hata-metni"></span>
+        </div>
+
+        <div class="form-grup">
+          <label for="saat">Saat *</label>
+          <input type="time" id="saat" name="saat">
+          <span id="saat-hata" class="hata-metni"></span>
+        </div>
+
+        <div class="form-grup">
+          <label for="yer">Yer *</label>
+          <input type="text" id="yer" name="yer" placeholder="Örn. A Blok Konferans Salonu">
+          <span id="yer-hata" class="hata-metni"></span>
+        </div>
+
+        <div class="form-grup">
+          <label for="kontenjan">Kontenjan</label>
+          <input type="number" id="kontenjan" name="kontenjan" placeholder="Örn. 80">
+          <span id="kontenjan-hata" class="hata-metni"></span>
+        </div>
+
+        <div class="form-grup">
+          <label for="aciklama">Açıklama</label>
+          <textarea id="aciklama" name="aciklama" rows="4" placeholder="Etkinlik hakkında detaylar..."></textarea>
+          <span id="aciklama-hata" class="hata-metni"></span>
+        </div>
+
+        <button type="submit" class="btn btn-kaydet">Kaydet</button>
+      </form>
+
+      <div id="form-mesaj"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Bekir Tuna Karamsal · 2416501428 · 2026</p>
+  </footer>
+</body>
+</html>

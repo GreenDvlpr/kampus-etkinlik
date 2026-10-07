@@ -1,17 +1,13 @@
 # Kampüs Etkinlikleri Portalı
 
+**Canlı Vercel Adresi:** [https://kampus-etkinlik-2416501428.vercel.app](https://kampus-etkinlik-2416501428.vercel.app) *(veya Vercel tarafından atanan canlı bağlantınız)*  
+**GitHub Deposu:** [https://github.com/GreenDvlpr/kampus-etkinlik](https://github.com/GreenDvlpr/kampus-etkinlik)  
+**Git Etiketleri (Tags):** `sprint-01`, `sprint-02`, `sprint-03`  
+
 **Öğrenci Adı Soyadı:** Bekir Tuna Karamsal  
 **Öğrenci Numarası:** 2416501428  
 **Bölüm:** Bilgisayar Mühendisliği / Bilişim Sistemleri  
 **Ders:** Web Tasarımı ve Programlama  
-
----
-
-## 🌐 Canlı Bağlantılar (Teslim Bilgileri)
-
-- **Canlı Vercel Adresi:** [https://kampus-etkinlik-2416501428.vercel.app](https://kampus-etkinlik-2416501428.vercel.app) *(veya Vercel tarafından atanan canlı bağlantınız)*
-- **GitHub Deposu:** [https://github.com/GreenDvlpr/kampus-etkinlik](https://github.com/GreenDvlpr/kampus-etkinlik)
-- **Git Etiketleri (Tags):** `sprint-01`, `sprint-02`
 
 ---
 
@@ -31,32 +27,48 @@ kampus-etkinlik/
 │   ├── etkinlik-guncelle.html       # Etkinlik Güncelleme Formu (value dolu alanlar)
 │   └── afis.jpg                     # Etkinlik afiş görseli
 │
-└── sprint2/                         # SPRINT 2 (Responsive Tasarım, CSS Grid)
-    ├── index.html                   # Ana Sayfa (Kart görünümü, 2 sütun desktop / 1 sütun mobil)
-    ├── etkinlikler.html             # Tüm Etkinlikler (3 sütun desktop / 1 sütun mobil)
-    ├── etkinlik-detay.html          # Detay Sayfası (Masaüstü yan yana, mobil alt alta)
-    ├── etkinlik-ekle.html           # Etkinlik Ekleme Formu (Üstte label, hata kontrolü)
-    ├── etkinlik-guncelle.html       # Etkinlik Güncelleme Formu (Dolu alanlar)
+├── sprint2/                         # SPRINT 2 (Responsive Tasarım, CSS Grid)
+│   ├── index.html                   # Ana Sayfa (Kart görünümü, 2 sütun desktop / 1 sütun mobil)
+│   ├── etkinlikler.html             # Tüm Etkinlikler (3 sütun desktop / 1 sütun mobil)
+│   ├── etkinlik-detay.html          # Detay Sayfası (Masaüstü yan yana, mobil alt alta)
+│   ├── etkinlik-ekle.html           # Etkinlik Ekleme Formu (Üstte label, hata kontrolü)
+│   ├── etkinlik-guncelle.html       # Etkinlik Güncelleme Formu (Dolu alanlar)
+│   ├── afis.jpg                     # Etkinlik afiş görseli
+│   └── css/
+│       ├── numaran.css              # Hesaplanan özel renk ve font değişkenli ana CSS
+│       └── 2416501428.css           # Öğrenci numarası adıyla yedek CSS dosyası
+│
+└── sprint3/                         # SPRINT 3 (JavaScript & DOM Manipülasyonu)
+    ├── index.html                   # Ana Sayfa (data-limit="2" ile tarihi en yakın 2 etkinlik)
+    ├── etkinlikler.html             # Tüm Etkinlikler (Dinamik arama + kategori filtresi)
+    ├── etkinlik-detay.html          # Etkinlik Detayı (?id= ile dinamik veri, hata yönetimi)
+    ├── etkinlik-ekle.html           # Etkinlik Ekleme (JS doğrulama, hata/başarı mesajı)
+    ├── etkinlik-guncelle.html       # Etkinlik Güncelleme (data-mode="guncelle", form doldurma)
     ├── afis.jpg                     # Etkinlik afiş görseli
-    └── css/
-        ├── numaran.css              # Hesaplanan özel renk ve font değişkenli ana CSS
-        └── 2416501428.css           # Öğrenci numarası adıyla yedek CSS dosyası
+    ├── css/
+    │   ├── numaran.css              # Responsive stiller, hata/başarı kutuları ve rozetler
+    │   └── 2416501428.css           # Öğrenci numarası adıyla CSS dosyası
+    └── js/
+        ├── data.js                  # 6 adet detaylı etkinlik verisi (events dizisi)
+        ├── event-list.js            # Kart üretimi, tarih sıralaması, arama & filtreleme
+        ├── event-detail.js          # URLSearchParams(?id=) ile dinamik detay & hata kutusu
+        └── event-form.js            # Form doğrulama, JSON çıktısı, güncelleme modu
 ```
 
 ---
 
-## 🎨 Sprint 2: Numara, Renk ve Font Hesaplaması
+## 🎨 Tasarım & CSS Değişkenleri
 
 Öğrenci Numarası: **2416501428**
 
 1. **Renk Tonu (`--ton`):**  
    $$\text{ton} = 2416501428 \pmod{360} = 348$$  
-   - `--renk-ana: hsl(var(--ton) 65% 38%);` (Gül kırmızısı / fuşya tonu)  
-   - `--renk-zemin: hsl(var(--ton) 30% 97%);` (Açık ve yumuşak arka plan)
+   - `--renk-ana: hsl(var(--ton) 65% 38%);`
+   - `--renk-zemin: hsl(var(--ton) 30% 97%);`
 
 2. **Yazı Tipi (`--font`):**  
    - Öğrenci numarasının son hanesi: **8**  
-   - Tablo eşleşmesi: `8 -> system-ui`  
+   - Eşleşen font: `system-ui`  
    - `--font: system-ui;`
 
 ```css
@@ -78,22 +90,18 @@ body { font-family: var(--font); }
 
 ## ✅ Kontrol Kriterleri ve Gerçekleştirilen Şartlar
 
-### Sprint 1:
-- [x] **5 Sayfa:** `index.html`, `etkinlikler.html`, `etkinlik-detay.html`, `etkinlik-ekle.html`, `etkinlik-guncelle.html`
-- [x] **Kırık bağlantı yok:** Sayfalar arası menü ve detay bağlantıları sorunsuz çalışır.
-- [x] **Her sayfada tek `<h1>`:** Semantik başlık sırası korundu.
-- [x] **Form ve Label:** Tüm input ve select alanlarının görünür `<label>` etiketleri `for` niteliğiyle bağlıdır.
-- [x] **Required doğrulaması:** Boş bırakılamaz alanlarda HTML5 `required` niteliği aktiftir.
-- [x] **Tablo şablonu:** Etkinlikler `<table border="1">` içinde, aynı sırada hücrelerle sunulmuştur.
-- [x] **Sıfır CSS ve JavaScript:** Tamamen saf tarayıcı varsayılanı (Times New Roman, mavi linkler).
-
-### Sprint 2:
-- [x] **Tablodan Karta Geçiş:** Geçici tablo kaldırıldı; `<section>` ve `<article>` ile CSS Grid kart düzeni kuruldu.
-- [x] **Mobil Öncelikli & Taşmasız:** Telefonda tek sütun, yatay kaydırma (horizontal scroll) kesinlikle yok.
-- [x] **Geniş Ekran Uyumu:** Masaüstünde ana sayfa 2 sütun, tüm etkinlikler 3 sütun olarak dizilir.
-- [x] **Detay Sayfası:** Afiş görseli solda, etkinlik künyesi (`<dl>`) sağda; telefonda ise alt alta hizalanır.
-- [x] **Erişilebilir Form & Butonlar:** Dokunmatik ekranlar için min. 44px basma alanları ve boş/hatalı alanlarda kırmızı kenarlık (`--renk-hata`).
-- [x] **CSS Değişkenleri:** Tüm renkler ve boşluklar `var(--...)` ile tanımlıdır.
+### Sprint 3 (JavaScript ve DOM):
+- [x] **data.js ile 6 Etkinlik:** Her nesnede `id`, `title`, `category`, `date`, `time`, `location`, `capacity`, `description` alanları tam ve benzersizdir.
+- [x] **Dinamik Kart Üretimi:** HTML'den statik kartlar tamamen temizlenmiş, kartlar `event-list.js` tarafından veriden üretilmektedir.
+- [x] **Ana Sayfa (data-limit="2"):** Etkinlik dizisi kopyalanarak tarihe göre sıralanmış (`localeCompare`) ve yaklaşan 2 etkinlik listelenmiştir.
+- [x] **Arama + Kategori Filtresi:** `input` ve `change` olaylarıyla başlık, açıklama ve yer alanlarında Türkçe uyumlu (`toLocaleLowerCase("tr-TR")`) arama ve kategori filtrelemesi birlikte çalışır.
+- [x] **Sonuç Bilgisi & Bulunamadı Mesajı:** Listelenen etkinlik sayısı anlık güncellenir, eşleşme yoksa "Aramanıza uygun etkinlik bulunamadı." uyarısı gösterilir.
+- [x] **?id= ile Dinamik Detay Sayfası:** `URLSearchParams` ile `id` okunur; `event-detail.js` doğru etkinliği açar, başlık ve sekmeyi günceller.
+- [x] **Geçersiz ID Hata Yönetimi:** Var olmayan veya eksik `id` verildiğinde kırmızı hata kutusu gösterilir, sayfa çökmez ve "Listeye dön" butonu sunulur.
+- [x] **Form Doğrulama (event-form.js):** `novalidate` ile tarayıcı balonları kapatılmış; boş/kısa alanlarda kırmızı kenarlık (`aria-invalid`) ve alan altında özel hata mesajı çıkar. Sayfa yenilenmez (`preventDefault`).
+- [x] **Başarı Durumu (JSON Çıktısı):** Form doğru doldurulduğunda yeşil kutuda oluşturulan etkinlik nesnesi `JSON.stringify` ile gösterilir.
+- [x] **Güncelleme Sayfası:** Detay sayfasındaki "Bu etkinliği güncelle" butonu ile form o etkinliğin verileriyle dolu açılır. `id`siz erişildiğinde uyarı kutusu gösterilir.
+- [x] **Sıfır localStorage & Sıfır Framework:** Vanilla JavaScript ve ES modülleri (`type="module"`) kullanılmıştır.
 
 ---
 
@@ -102,17 +110,14 @@ body { font-family: var(--font); }
 ### 1. GitHub'a Gönderme
 ```bash
 git add .
-git commit -m "Sprint2 yapıldı"
-git tag sprint-02
-git remote add origin https://github.com/KULLANICI_ADINIZ/REPOSU.git
-git push -u origin main --tags
+git commit -m "Sprint3 yapıldı"
+git tag sprint-03
+git push origin master
+git push origin --tags
 ```
 
 ### 2. Vercel'de Canlıya Alma
-1. [vercel.com](https://vercel.com) adresine gidin ve GitHub hesabınızla giriş yapın.
-2. **Add New...** -> **Project** butonuna tıklayın ve bu depoyu seçin.
-3. **Framework Preset:** `Other` (Build komutu yok).
-4. **Root Directory:**
-   - Sprint 1 testi için: `sprint1`
-   - Sprint 2 testi için: `sprint2` *(Settings -> Root Directory üzerinden güncellenebilir)*
-5. **Deploy** butonuna basarak anında canlı URL'nizi alın.
+1. [vercel.com](https://vercel.com) adresine gidin ve projenizi açın.
+2. **Settings** -> **General** sekmesine gelin.
+3. **Root Directory** ayarını `sprint2` yerine **`sprint3`** olarak güncelleyip kaydedin.
+4. Yeni bir dağıtım tetiklenerek siteniz anında Sprint 3 JavaScript fonksiyonlarıyla yayına alınacaktır.
