@@ -1,8 +1,10 @@
+[https://kampus-etkinlik-2416501428.vercel.app](https://kampus-etkinlik-2416501428.vercel.app)
+
 # Kampüs Etkinlikleri Portalı
 
-**Canlı Vercel Adresi:** [https://kampus-etkinlik-2416501428.vercel.app](https://kampus-etkinlik-2416501428.vercel.app) *(veya Vercel tarafından atanan canlı bağlantınız)*  
+**Canlı Vercel Adresi:** [https://kampus-etkinlik-2416501428.vercel.app](https://kampus-etkinlik-2416501428.vercel.app)  
 **GitHub Deposu:** [https://github.com/GreenDvlpr/kampus-etkinlik](https://github.com/GreenDvlpr/kampus-etkinlik)  
-**Git Etiketleri (Tags):** `sprint-01`, `sprint-02`, `sprint-03`  
+**Git Etiketleri (Tags):** `sprint-01`, `sprint-02`, `sprint-03`, `sprint-04`  
 
 **Öğrenci Adı Soyadı:** Bekir Tuna Karamsal  
 **Öğrenci Numarası:** 2416501428  
@@ -20,39 +22,31 @@ kampus-etkinlik/
 ├── README.md
 │
 ├── sprint1/                         # SPRINT 1 (Yalnızca Saf HTML, Sıfır CSS, Sıfır JS)
-│   ├── index.html                   # Ana Sayfa (Yaklaşan etkinlikler, çerçeveli tablo)
-│   ├── etkinlikler.html             # Tüm Etkinlikler (Tüm etkinlikler listesi)
-│   ├── etkinlik-detay.html          # Etkinlik Detay (figure, img, dl/dt/dd, article)
-│   ├── etkinlik-ekle.html           # Etkinlik Ekleme Formu (form, label, required)
-│   ├── etkinlik-guncelle.html       # Etkinlik Güncelleme Formu (value dolu alanlar)
-│   └── afis.jpg                     # Etkinlik afiş görseli
-│
 ├── sprint2/                         # SPRINT 2 (Responsive Tasarım, CSS Grid)
-│   ├── index.html                   # Ana Sayfa (Kart görünümü, 2 sütun desktop / 1 sütun mobil)
-│   ├── etkinlikler.html             # Tüm Etkinlikler (3 sütun desktop / 1 sütun mobil)
-│   ├── etkinlik-detay.html          # Detay Sayfası (Masaüstü yan yana, mobil alt alta)
-│   ├── etkinlik-ekle.html           # Etkinlik Ekleme Formu (Üstte label, hata kontrolü)
-│   ├── etkinlik-guncelle.html       # Etkinlik Güncelleme Formu (Dolu alanlar)
-│   ├── afis.jpg                     # Etkinlik afiş görseli
-│   └── css/
-│       ├── numaran.css              # Hesaplanan özel renk ve font değişkenli ana CSS
-│       └── 2416501428.css           # Öğrenci numarası adıyla yedek CSS dosyası
+├── sprint3/                         # SPRINT 3 (JavaScript & DOM Manipülasyonu)
 │
-└── sprint3/                         # SPRINT 3 (JavaScript & DOM Manipülasyonu)
-    ├── index.html                   # Ana Sayfa (data-limit="2" ile tarihi en yakın 2 etkinlik)
-    ├── etkinlikler.html             # Tüm Etkinlikler (Dinamik arama + kategori filtresi)
-    ├── etkinlik-detay.html          # Etkinlik Detayı (?id= ile dinamik veri, hata yönetimi)
-    ├── etkinlik-ekle.html           # Etkinlik Ekleme (JS doğrulama, hata/başarı mesajı)
-    ├── etkinlik-guncelle.html       # Etkinlik Güncelleme (data-mode="guncelle", form doldurma)
-    ├── afis.jpg                     # Etkinlik afiş görseli
-    ├── css/
-    │   ├── numaran.css              # Responsive stiller, hata/başarı kutuları ve rozetler
-    │   └── 2416501428.css           # Öğrenci numarası adıyla CSS dosyası
-    └── js/
-        ├── data.js                  # 6 adet detaylı etkinlik verisi (events dizisi)
-        ├── event-list.js            # Kart üretimi, tarih sıralaması, arama & filtreleme
-        ├── event-detail.js          # URLSearchParams(?id=) ile dinamik detay & hata kutusu
-        └── event-form.js            # Form doğrulama, JSON çıktısı, güncelleme modu
+└── frontend/                        # SPRINT 4 (Vite, React 19 & TypeScript)
+    ├── public/
+    │   ├── afis.svg                 # Vektörel etkinlik afişi
+    │   └── favicon.svg              # Uygulama sekme simgesi
+    ├── src/
+    │   ├── types/
+    │   │   └── campus-event.ts      # Category union tipi ve CampusEvent arayüzü
+    │   ├── data/
+    │   │   └── events.ts            # Tipli 6 adet etkinlik kaydı
+    │   ├── utils/
+    │   │   └── filter-events.ts     # searchEvents, filterByCategory, findEventById saf fonksiyonları
+    │   ├── App.css                  # Öğrenci temalı stil kuralları
+    │   ├── App.tsx                  # 5 sayfa (Home, Events, Detail, Add, Update) & state yönetimi
+    │   ├── index.css                # Genel stil (bu sprintte boş)
+    │   └── main.tsx                 # React DOM createRoot başlatıcısı
+    ├── index.html                   # HTML şablonu (div#root)
+    ├── vite.config.ts               # Vite yapılandırması
+    ├── tsconfig.json                # TypeScript ana ayarları
+    ├── tsconfig.app.json            # TypeScript frontend uygulama ayarları
+    ├── tsconfig.node.json           # TypeScript node ayarları
+    ├── package.json                 # Bağımlılıklar ve derleme scriptleri
+    └── README.md                    # Canlı link ve dosya görev açıklamaları
 ```
 
 ---
@@ -63,45 +57,30 @@ kampus-etkinlik/
 
 1. **Renk Tonu (`--ton`):**  
    $$\text{ton} = 2416501428 \pmod{360} = 348$$  
-   - `--renk-ana: hsl(var(--ton) 65% 38%);`
-   - `--renk-zemin: hsl(var(--ton) 30% 97%);`
+   - `--renk-ana: hsl(var(--ton) 65% 38%);` (Bordo / Gül kırmızısı)  
+   - `--renk-zemin: hsl(var(--ton) 30% 97%);`  
 
 2. **Yazı Tipi (`--font`):**  
    - Öğrenci numarasının son hanesi: **8**  
    - Eşleşen font: `system-ui`  
    - `--font: system-ui;`
 
-```css
-/* Bekir Tuna Karamsal — 2416501428 */
-:root {
-  --no: 2416501428;
-  --ton: 348;
-  --ton: mod(var(--no), 360);
-  --renk-ana: hsl(var(--ton) 65% 38%);
-  --renk-zemin: hsl(var(--ton) 30% 97%);
-  --font: system-ui;
-  --bosluk-m: 1rem;
-  --kose: 8px;
-}
-body { font-family: var(--font); }
-```
-
 ---
 
-## ✅ Kontrol Kriterleri ve Gerçekleştirilen Şartlar
+## ✅ Sprint 4 Kontrol Kriterleri ve Gerçekleştirilen Şartlar
 
-### Sprint 3 (JavaScript ve DOM):
-- [x] **data.js ile 6 Etkinlik:** Her nesnede `id`, `title`, `category`, `date`, `time`, `location`, `capacity`, `description` alanları tam ve benzersizdir.
-- [x] **Dinamik Kart Üretimi:** HTML'den statik kartlar tamamen temizlenmiş, kartlar `event-list.js` tarafından veriden üretilmektedir.
-- [x] **Ana Sayfa (data-limit="2"):** Etkinlik dizisi kopyalanarak tarihe göre sıralanmış (`localeCompare`) ve yaklaşan 2 etkinlik listelenmiştir.
-- [x] **Arama + Kategori Filtresi:** `input` ve `change` olaylarıyla başlık, açıklama ve yer alanlarında Türkçe uyumlu (`toLocaleLowerCase("tr-TR")`) arama ve kategori filtrelemesi birlikte çalışır.
-- [x] **Sonuç Bilgisi & Bulunamadı Mesajı:** Listelenen etkinlik sayısı anlık güncellenir, eşleşme yoksa "Aramanıza uygun etkinlik bulunamadı." uyarısı gösterilir.
-- [x] **?id= ile Dinamik Detay Sayfası:** `URLSearchParams` ile `id` okunur; `event-detail.js` doğru etkinliği açar, başlık ve sekmeyi günceller.
-- [x] **Geçersiz ID Hata Yönetimi:** Var olmayan veya eksik `id` verildiğinde kırmızı hata kutusu gösterilir, sayfa çökmez ve "Listeye dön" butonu sunulur.
-- [x] **Form Doğrulama (event-form.js):** `novalidate` ile tarayıcı balonları kapatılmış; boş/kısa alanlarda kırmızı kenarlık (`aria-invalid`) ve alan altında özel hata mesajı çıkar. Sayfa yenilenmez (`preventDefault`).
-- [x] **Başarı Durumu (JSON Çıktısı):** Form doğru doldurulduğunda yeşil kutuda oluşturulan etkinlik nesnesi `JSON.stringify` ile gösterilir.
-- [x] **Güncelleme Sayfası:** Detay sayfasındaki "Bu etkinliği güncelle" butonu ile form o etkinliğin verileriyle dolu açılır. `id`siz erişildiğinde uyarı kutusu gösterilir.
-- [x] **Sıfır localStorage & Sıfır Framework:** Vanilla JavaScript ve ES modülleri (`type="module"`) kullanılmıştır.
+- [x] **Vite + React + TypeScript:** Proje `frontend/` klasöründe sıfırdan Vite `react-ts` şablonuyla kuruldu.
+- [x] **TypeScript Tipleri:** `src/types/campus-event.ts` içinde `Category` union tipi ve `CampusEvent` arayüzü tanımlandı.
+- [x] **Tipli Veri:** `src/data/events.ts` içinde 6 adet etkinlik `CampusEvent[]` tipinde tanımlandı, `import type` kullanıldı.
+- [x] **Saf Fonksiyonlar:** `src/utils/filter-events.ts` dosyasında `searchEvents`, `filterByCategory` ve `findEventById` fonksiyonları DOM'a dokunmadan saf fonksiyon olarak yazıldı.
+- [x] **Tek Bileşen (App.tsx):** 5 sayfanın tamamı tek `App.tsx` bileşeni içinde JSX olarak yazıldı.
+- [x] **State Tabanlı Sayfa Geçişi:** React Router olmaksızın `page` state'i (`useState<PageName>`) ve `go(page, id)` fonksiyonu ile sayfa geçişleri sağlandı; sayfa yenilenmesi engellendi.
+- [x] **Ana Sayfa:** Tarihe göre sıralanmış (`localeCompare`) en yakın 2 etkinlik kartı listelendi.
+- [x] **Etkinlikler & Arama:** `searchText` ve `category` state'leri ile controlled input yapısı kuruldu; arama ve kategori filtreleri anlık olarak birleşik çalıştırıldı.
+- [x] **Side-Effect (useEffect):** `useEffect` hook'u ile sekme başlığı (`document.title`) her sayfada ve detay sayfasında etkinliğin adına göre güncellendi.
+- [x] **Detay Sayfası:** `selectedId` üzerinden etkinlik verisi bulundu; afiş yalnızca varsa (`selected.image &&`) gösterildi. "Bu etkinliği güncelle" butonu ile güncelleme sayfasına geçiş sağlandı.
+- [x] **Ekle ve Güncelle Formları:** ADIM 13 gereğince `page === "add" || page === "update"` bloğunda form sadece görünüm olarak sunuldu; `onSubmit` olayında `preventDefault()` uygulandı.
+- [x] **Hatasız Build:** `npm run build` komutu `tsc -b && vite build` adımlarını sıfır hata ve uyarı ile başarıyla tamamladı.
 
 ---
 
@@ -110,14 +89,15 @@ body { font-family: var(--font); }
 ### 1. GitHub'a Gönderme
 ```bash
 git add .
-git commit -m "Sprint3 yapıldı"
-git tag sprint-03
+git commit -m "Complete sprint 4"
+git tag sprint-04
 git push origin master
 git push origin --tags
 ```
 
 ### 2. Vercel'de Canlıya Alma
-1. [vercel.com](https://vercel.com) adresine gidin ve projenizi açın.
+1. [vercel.com](https://vercel.com) adresine gidin ve `kampus-etkinlik` projenizi açın.
 2. **Settings** -> **General** sekmesine gelin.
-3. **Root Directory** ayarını `sprint2` yerine **`sprint3`** olarak güncelleyip kaydedin.
-4. Yeni bir dağıtım tetiklenerek siteniz anında Sprint 3 JavaScript fonksiyonlarıyla yayına alınacaktır.
+3. **Root Directory:** `sprint3` yerine **`frontend`** yapın ve kaydedin.
+4. **Framework Preset:** `Other` yerine **`Vite`** seçin (Build çıktısı olarak `dist` klasörünün tanınması için şarttır).
+5. **Deployments** sekmesinden yeni dağıtımın başarıyla tamamlandığını doğrulayın.

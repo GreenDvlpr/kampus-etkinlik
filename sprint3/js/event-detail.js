@@ -49,7 +49,7 @@ if (!event) {
       <article class="detay-kapsayici">
         <div class="detay-icerik">
           <figure>
-            <img src="afis.jpg" alt="${event.title} afişi">
+            <img src="${event.image || 'afis.jpg'}" alt="${event.title} afişi">
             <figcaption>${event.title} afişi</figcaption>
           </figure>
 

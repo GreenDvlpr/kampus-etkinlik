@@ -164,8 +164,7 @@ main h2 {
 }
 
 .kart .detay-link,
-.btn-link,
-.tumunu-gor a {
+.btn-link {
   color: var(--renk-ana);
   font-weight: 600;
   text-decoration: none;
@@ -176,9 +175,30 @@ main h2 {
 }
 
 .kart .detay-link:hover,
-.btn-link:hover,
-.tumunu-gor a:hover {
+.btn-link:hover {
   text-decoration: underline;
+}
+
+.tumunu-gor a,
+.btn-tumunu-gor {
+  background-color: var(--renk-ana) !important;
+  color: var(--renk-beyaz) !important;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--kose);
+  min-height: 44px;
+  line-height: 24px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.tumunu-gor a:hover,
+.btn-tumunu-gor:hover {
+  opacity: 0.9;
+  text-decoration: none;
 }
 
 /* Filtre Alanı (Sprint 3: Adım 6 & 7) */
