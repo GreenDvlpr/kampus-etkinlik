@@ -146,7 +146,7 @@ export function App() {
                   go("events");
                 }}
               >
-                Tüm etkinlikleri gör
+                Etkinlikleri gör
               </a>
             </p>
           </>
