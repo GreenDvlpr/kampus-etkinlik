@@ -39,8 +39,7 @@ body {
 .site-header {
   background-color: var(--renk-ana);
   color: var(--renk-beyaz);
-  padding: var(--bosluk-m);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  padding: var(--bosluk-m) var(--bosluk-m) 0 var(--bosluk-m);
 }
 
 .site-header h1 {
@@ -50,11 +49,20 @@ body {
   color: var(--renk-beyaz);
 }
 
+.site-header .aciklama-metin,
+.site-header p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 var(--bosluk-s) 0;
+}
+
 .site-nav {
   display: flex;
   flex-wrap: wrap;
   gap: var(--bosluk-s);
   align-items: center;
+  background-color: var(--renk-ana);
+  padding: var(--bosluk-s) var(--bosluk-m) var(--bosluk-m) var(--bosluk-m);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .site-nav a {
@@ -242,8 +250,12 @@ main h2 {
   font-size: 1rem;
 }
 
+.sonuc,
 .sonuc-yok {
+  font-weight: 700;
   color: var(--renk-hata, #d32f2f);
+  margin-bottom: var(--bosluk-m);
+  font-size: 1rem;
 }
 
 /* Detay Sayfası Tasarımı (Sprint 3: Adım 8 & Beklenen Çıktı 5/7) */

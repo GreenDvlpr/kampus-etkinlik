@@ -4,7 +4,7 @@
 
 **Canlı Vercel Adresi:** [https://bekir-six.vercel.app](https://bekir-six.vercel.app)  
 **GitHub Deposu:** [https://github.com/GreenDvlpr/kampus-etkinlik](https://github.com/GreenDvlpr/kampus-etkinlik)  
-**Git Etiketleri (Tags):** `sprint-01`, `sprint-02`, `sprint-03`, `sprint-04`  
+**Git Etiketleri (Tags):** `sprint-01`, `sprint-02`, `sprint-03`, `sprint-04`, `sprint-05`  
 
 **Öğrenci Adı Soyadı:** Bekir Tuna Karamsal  
 **Öğrenci Numarası:** 2416501428  
@@ -25,19 +25,33 @@ kampus-etkinlik/
 ├── sprint2/                         # SPRINT 2 (Responsive Tasarım, CSS Grid)
 ├── sprint3/                         # SPRINT 3 (JavaScript & DOM Manipülasyonu)
 │
-└── frontend/                        # SPRINT 4 (Vite, React 19 & TypeScript)
+└── frontend/                        # SPRINT 4 & 5 (Vite, React 19 & TypeScript Bileşen Mimarisi)
     ├── public/
     │   ├── afis.svg                 # Vektörel etkinlik afişi
     │   └── favicon.svg              # Uygulama sekme simgesi
     ├── src/
-    │   ├── types/
-    │   │   └── campus-event.ts      # Category union tipi ve CampusEvent arayüzü
+    │   ├── components/
+    │   │   ├── layout/
+    │   │   │   ├── Header.tsx       # Başlık ve alt başlık sunan üst bileşen
+    │   │   │   ├── Navigation.tsx   # Menü ve sayfa geçiş butonları
+    │   │   │   └── Footer.tsx       # Öğrenci künyesi bileşeni
+    │   │   ├── events/
+    │   │   │   ├── EventCard.tsx    # Tekil etkinlik kartı
+    │   │   │   ├── EventList.tsx    # Etkinlikleri 2 sütunlu ızgarada listeleyen bileşen
+    │   │   │   ├── EventFilter.tsx  # Arama ve kategori filtreleme formu
+    │   │   │   └── EventDetail.tsx  # Etkinlik detay ve künye sayfası
+    │   │   └── forms/
+    │   │       └── EventForm.tsx    # Ekleme ve güncelleme form bileşeni
     │   ├── data/
     │   │   └── events.ts            # Tipli 6 adet etkinlik kaydı
+    │   ├── types/
+    │   │   ├── campus-event.ts      # Category union tipi ve CampusEvent arayüzü
+    │   │   └── page.ts              # PageName sayfa adı tipi
     │   ├── utils/
-    │   │   └── filter-events.ts     # searchEvents, filterByCategory, findEventById saf fonksiyonları
+    │   │   ├── filter-events.ts     # Arama ve filtreleme saf fonksiyonları
+    │   │   └── format-date.ts       # Tarih biçimlendirme saf fonksiyonu
     │   ├── App.css                  # Öğrenci temalı stil kuralları
-    │   ├── App.tsx                  # 5 sayfa (Home, Events, Detail, Add, Update) & state yönetimi
+    │   ├── App.tsx                  # Ana bileşen, lifting state up & orkestrasyon
     │   ├── index.css                # Genel stil (bu sprintte boş)
     │   └── main.tsx                 # React DOM createRoot başlatıcısı
     ├── index.html                   # HTML şablonu (div#root)
