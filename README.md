@@ -1,8 +1,8 @@
-[https://kampus-etkinlik-2416501428.vercel.app](https://kampus-etkinlik-2416501428.vercel.app)
+[https://bekir-six.vercel.app](https://bekir-six.vercel.app)
 
 # Kampüs Etkinlikleri Portalı
 
-**Canlı Vercel Adresi:** [https://kampus-etkinlik-2416501428.vercel.app](https://kampus-etkinlik-2416501428.vercel.app)  
+**Canlı Vercel Adresi:** [https://bekir-six.vercel.app](https://bekir-six.vercel.app)  
 **GitHub Deposu:** [https://github.com/GreenDvlpr/kampus-etkinlik](https://github.com/GreenDvlpr/kampus-etkinlik)  
 **Git Etiketleri (Tags):** `sprint-01`, `sprint-02`, `sprint-03`, `sprint-04`  
 

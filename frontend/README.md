@@ -1,4 +1,4 @@
-[https://kampus-etkinlik-2416501428.vercel.app](https://kampus-etkinlik-2416501428.vercel.app)
+[https://bekir-six.vercel.app](https://bekir-six.vercel.app)
 
 # Kampüs Etkinlikleri - Frontend (Sprint 4: Vite, React & TypeScript)
 
