@@ -10,7 +10,7 @@ export const events: CampusEvent[] = [
     location: "A Blok Konferans Salonu",
     capacity: 100,
     description: "Mezunlarla kariyer söyleşileri ve şirket standları.",
-    image: "/images/kariyer-gunleri.jpg"
+    image: "/afis.svg"
   },
   {
     id: "event-2",
@@ -20,8 +20,7 @@ export const events: CampusEvent[] = [
     time: "10:00",
     location: "Bilgisayar Laboratuvarı 2",
     capacity: 20,
-    description: "Arduino ile çizgi izleyen robot yapımı, başlangıç seviyesi.",
-    image: "/images/robotik-atolyesi.jpg"
+    description: "Arduino ile çizgi izleyen robot yapımı, başlangıç seviyesi."
   },
   {
     id: "event-3",
@@ -31,8 +30,7 @@ export const events: CampusEvent[] = [
     time: "13:00",
     location: "B Blok Amfi 1",
     capacity: 50,
-    description: "Sektörden bir uzmanla güvenlik kariyeri üzerine sohbet.",
-    image: "/images/siber-guvenlik.jpg"
+    description: "Sektörden bir uzmanla güvenlik kariyeri üzerine sohbet."
   },
   {
     id: "event-4",
@@ -42,8 +40,7 @@ export const events: CampusEvent[] = [
     time: "15:00",
     location: "Bilgisayar Laboratuvarı 1",
     capacity: 30,
-    description: "HTML ve CSS ile ilk kişisel sayfanı yap.",
-    image: "/images/web-tasarim.jpg"
+    description: "HTML ve CSS ile ilk kişisel sayfanı yap."
   },
   {
     id: "event-5",
@@ -53,8 +50,7 @@ export const events: CampusEvent[] = [
     time: "11:00",
     location: "A Blok Konferans Salonu",
     capacity: 150,
-    description: "Büyük dil modelleri ve geleceğin yapay zeka teknolojileri.",
-    image: "/images/yapay-zeka.jpg"
+    description: "Büyük dil modelleri ve geleceğin yapay zeka teknolojileri."
   },
   {
     id: "event-6",
@@ -64,7 +60,6 @@ export const events: CampusEvent[] = [
     time: "14:00",
     location: "C Blok Laboratuvar 3",
     capacity: 25,
-    description: "Flutter ile modern mobil uygulamalar geliştirmeye giriş.",
-    image: "/images/mobil-uygulama.jpg"
+    description: "Flutter ile modern mobil uygulamalar geliştirmeye giriş."
   }
 ];

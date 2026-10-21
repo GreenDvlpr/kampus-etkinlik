@@ -50,14 +50,21 @@ export function App() {
       ? "Etkinlik Ekle"
       : "Etkinlik Güncelle";
 
+  const title =
+    page === "home"
+      ? "Ana Sayfa"
+      : page === "events"
+      ? "Tüm Etkinlikler"
+      : page === "detail"
+      ? selected?.title || "Etkinlik Detayı"
+      : page === "add"
+      ? "Etkinlik Ekle"
+      : "Etkinlik Güncelle";
+
   // ADIM 11: Sekme başlığı side-effect
   useEffect(() => {
-    if (page === "detail" && selected) {
-      document.title = `Kampüs Etkinlikleri — ${selected.title}`;
-    } else {
-      document.title = `Kampüs Etkinlikleri — ${headerTitle}`;
-    }
-  }, [headerTitle, page, selected]);
+    document.title = `Kampüs Etkinlikleri — ${title}`;
+  }, [title]);
 
   const upcoming = [...events]
     .sort((a, b) => a.date.localeCompare(b.date))
@@ -146,7 +153,7 @@ export function App() {
                   go("events");
                 }}
               >
-                Etkinlikleri gör
+                Tüm etkinlikleri gör
               </a>
             </p>
           </>
@@ -297,64 +304,62 @@ export function App() {
               Bu sprintte form sadece görünüm; kayıt yapılmaz.
             </p>
 
-            <section className="form-kart">
-              <form
-                className="form"
-                onSubmit={(e) => e.preventDefault()}
-              >
-                <div className="form-grup">
-                  <label htmlFor="title">Etkinlik Adı</label>
-                  <input
-                    id="title"
-                    placeholder="Örn. Kariyer Günleri 2026"
-                    maxLength={80}
-                  />
-                </div>
+            <form
+              className="form"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <div className="form-grup">
+                <label htmlFor="title">Etkinlik Adı</label>
+                <input
+                  id="title"
+                  placeholder="Örn. Kariyer Günleri 2026"
+                  maxLength={80}
+                />
+              </div>
 
-                <div className="form-grup">
-                  <label htmlFor="category">Kategori</label>
-                  <select id="category">
-                    <option value="">Seçiniz</option>
-                    <option value="Seminer">Seminer</option>
-                    <option value="Atölye">Atölye</option>
-                    <option value="Söyleşi">Söyleşi</option>
-                    <option value="Yarışma">Yarışma</option>
-                  </select>
-                </div>
+              <div className="form-grup">
+                <label htmlFor="category">Kategori</label>
+                <select id="category">
+                  <option value="">Seçiniz</option>
+                  <option value="Seminer">Seminer</option>
+                  <option value="Atölye">Atölye</option>
+                  <option value="Söyleşi">Söyleşi</option>
+                  <option value="Yarışma">Yarışma</option>
+                </select>
+              </div>
 
-                <div className="form-grup">
-                  <label htmlFor="date">Tarih</label>
-                  <input type="date" id="date" />
-                </div>
+              <div className="form-grup">
+                <label htmlFor="date">Tarih</label>
+                <input type="date" id="date" />
+              </div>
 
-                <div className="form-grup">
-                  <label htmlFor="time">Saat</label>
-                  <input type="time" id="time" />
-                </div>
+              <div className="form-grup">
+                <label htmlFor="time">Saat</label>
+                <input type="time" id="time" />
+              </div>
 
-                <div className="form-grup">
-                  <label htmlFor="location">Yer</label>
-                  <input
-                    id="location"
-                    placeholder="Örn. A Blok Konferans Salonu"
-                  />
-                </div>
+              <div className="form-grup">
+                <label htmlFor="location">Yer</label>
+                <input
+                  id="location"
+                  placeholder="Örn. A Blok Konferans Salonu"
+                />
+              </div>
 
-                <div className="form-grup">
-                  <label htmlFor="capacity">Kontenjan</label>
-                  <input type="number" id="capacity" />
-                </div>
+              <div className="form-grup">
+                <label htmlFor="capacity">Kontenjan</label>
+                <input type="number" id="capacity" />
+              </div>
 
-                <div className="form-grup">
-                  <label htmlFor="description">Açıklama</label>
-                  <textarea id="description" rows={5} />
-                </div>
+              <div className="form-grup">
+                <label htmlFor="description">Açıklama</label>
+                <textarea id="description" rows={5} />
+              </div>
 
-                <button type="submit" className="btn btn-kaydet">
-                  {page === "add" ? "Kaydet" : "Güncelle"}
-                </button>
-              </form>
-            </section>
+              <button type="submit" className="btn btn-kaydet">
+                Kaydet
+              </button>
+            </form>
           </>
         )}
       </main>
