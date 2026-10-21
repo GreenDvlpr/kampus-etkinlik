@@ -2,12 +2,32 @@ import type { CampusEvent } from "../../types/campus-event";
 import { formatDate } from "../../utils/format-date";
 
 export interface EventDetailProps {
-  event: CampusEvent;
+  event?: CampusEvent;
   onBack: () => void;
   onEdit: (id: string) => void;
 }
 
 export function EventDetail({ event, onBack, onEdit }: EventDetailProps) {
+  if (!event) {
+    return (
+      <div className="hata-kutusu">
+        <p>Etkinlik bulunamadı. Listeden bir etkinlik seçin.</p>
+        <p style={{ marginTop: "1.5rem" }}>
+          <a
+            href="#events"
+            className="btn btn-liste"
+            onClick={(e) => {
+              e.preventDefault();
+              onBack();
+            }}
+          >
+            &larr; Listeye dön
+          </a>
+        </p>
+      </div>
+    );
+  }
+
   return (
     <article className="detay-kapsayici">
       <div className="detay-icerik">
