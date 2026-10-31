@@ -28,6 +28,7 @@ export function EventForm({ onSubmit }: EventFormProps) {
           <option value="Atölye">Atölye</option>
           <option value="Söyleşi">Söyleşi</option>
           <option value="Yarışma">Yarışma</option>
+          <option value="Ders">Ders</option>
         </select>
       </div>
 

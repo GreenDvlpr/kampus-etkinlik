@@ -39,7 +39,9 @@ body {
 .site-header {
   background-color: var(--renk-ana);
   color: var(--renk-beyaz);
-  padding: var(--bosluk-m) var(--bosluk-m) 0 var(--bosluk-m);
+  padding: var(--bosluk-m) var(--bosluk-m) var(--bosluk-s) var(--bosluk-m);
+  margin: 0;
+  display: flow-root;
 }
 
 .site-header h1 {
@@ -52,7 +54,7 @@ body {
 .site-header .aciklama-metin,
 .site-header p {
   color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 var(--bosluk-s) 0;
+  margin: 0;
 }
 
 .site-nav {
@@ -61,7 +63,8 @@ body {
   gap: var(--bosluk-s);
   align-items: center;
   background-color: var(--renk-ana);
-  padding: var(--bosluk-s) var(--bosluk-m) var(--bosluk-m) var(--bosluk-m);
+  padding: 0 var(--bosluk-m) var(--bosluk-m) var(--bosluk-m);
+  margin: -1px 0 0 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
