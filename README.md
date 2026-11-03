@@ -1,13 +1,12 @@
 # Kampüs Etkinlikleri Portalı (Sprint 6 + Vize Teslimi)
 
-**Canlı Vercel Adresi:** [https://bekir-six.vercel.app](https://bekir-six.vercel.app)  
-**Alternatif / Standart Domain:** [https://bekirtunakaramsal-frontend.vercel.app](https://bekirtunakaramsal-frontend.vercel.app)  
+**Canlı Vercel Adresi:** : ( https://bekirtunakaramsal-fronted.vercel.app )  
 **GitHub Deposu:** [https://github.com/GreenDvlpr/kampus-etkinlik](https://github.com/GreenDvlpr/kampus-etkinlik)  
 **Git Etiketleri (Tags):** `frontend`, `sprint-06`, `sprint-05`, `sprint-04`, `sprint-03`, `sprint-02`, `sprint-01`  
 
 **Öğrenci Adı Soyadı:** Bekir Tuna Karamsal  
 **Öğrenci Numarası:** 2416501428  
-**Bölüm:** Bilgisayar Mühendisliği / Bilişim Sistemleri  
+**Bölüm:** Bilgisayar Mühendisliği 
 **Ders:** Web Tasarımı ve Programlama (Frontend Vize Projesi)  
 
 ---
