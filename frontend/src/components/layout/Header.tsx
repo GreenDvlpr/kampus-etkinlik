@@ -1,13 +1,10 @@
-export interface HeaderProps {
-  title: string;
-  text?: string;
-}
-
-export function Header({ title, text }: HeaderProps) {
+export function Header() {
   return (
     <header className="site-header">
-      <h1>{title}</h1>
-      {text && <p className="aciklama-metin">{text}</p>}
+      <h1>Kampüs Etkinlikleri</h1>
+      <p className="aciklama-metin">
+        Fakültedeki seminer, atölye ve söyleşileri tek yerden takip edin.
+      </p>
     </header>
   );
 }

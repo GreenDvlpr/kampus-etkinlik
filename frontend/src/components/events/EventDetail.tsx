@@ -1,33 +1,12 @@
+import { Link } from "react-router-dom";
 import type { CampusEvent } from "../../types/campus-event";
 import { formatDate } from "../../utils/format-date";
 
 export interface EventDetailProps {
-  event?: CampusEvent;
-  onBack: () => void;
-  onEdit: (id: string) => void;
+  event: CampusEvent;
 }
 
-export function EventDetail({ event, onBack, onEdit }: EventDetailProps) {
-  if (!event) {
-    return (
-      <div className="hata-kutusu">
-        <p>Etkinlik bulunamadı. Listeden bir etkinlik seçin.</p>
-        <p style={{ marginTop: "1.5rem" }}>
-          <a
-            href="#events"
-            className="btn btn-liste"
-            onClick={(e) => {
-              e.preventDefault();
-              onBack();
-            }}
-          >
-            &larr; Listeye dön
-          </a>
-        </p>
-      </div>
-    );
-  }
-
+export function EventDetail({ event }: EventDetailProps) {
   return (
     <article className="detay-kapsayici">
       <div className="detay-icerik">
@@ -61,26 +40,12 @@ export function EventDetail({ event, onBack, onEdit }: EventDetailProps) {
       </div>
 
       <div className="detay-butonlar">
-        <a
-          href="#events"
-          className="btn btn-liste"
-          onClick={(e) => {
-            e.preventDefault();
-            onBack();
-          }}
-        >
+        <Link to="/events" className="btn btn-liste">
           &larr; Listeye dön
-        </a>
-        <a
-          href="#update"
-          className="btn btn-guncelle"
-          onClick={(e) => {
-            e.preventDefault();
-            onEdit(event.id);
-          }}
-        >
+        </Link>
+        <Link to={`/admin/${event.id}/edit`} className="btn btn-guncelle">
           Bu etkinliği güncelle
-        </a>
+        </Link>
       </div>
     </article>
   );

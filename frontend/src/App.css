@@ -479,3 +479,98 @@ footer {
   color: var(--renk-metin-hafif);
   font-size: 0.9rem;
 }
+
+/* Bölüm Başlığı & Tablo Stilleri (Sprint 6) */
+.bolum-baslik {
+  margin-top: var(--bosluk-m);
+  margin-bottom: var(--bosluk-m);
+  color: var(--renk-metin);
+  font-size: 1.5rem;
+}
+
+.tablo {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--bosluk-m);
+  background-color: var(--renk-beyaz);
+  border-radius: var(--kose);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.tablo th {
+  background: var(--renk-ana);
+  color: #fff;
+  padding: var(--bosluk-s) var(--bosluk-m);
+  text-align: left;
+  font-weight: 600;
+}
+
+.tablo td {
+  padding: var(--bosluk-s) var(--bosluk-m);
+  border-bottom: 1px solid var(--renk-kenarlik);
+}
+
+.tablo tr:last-child td {
+  border-bottom: none;
+}
+
+.islemler {
+  display: flex;
+  gap: var(--bosluk-s);
+  align-items: center;
+}
+
+.buton-sil,
+.btn-sil {
+  background: var(--renk-hata) !important;
+  color: #fff !important;
+}
+
+.auth-linkler {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.auth-linkler a {
+  color: var(--renk-ana);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-linkler a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 699px) {
+  .tablo thead {
+    display: none;
+  }
+  .tablo tr {
+    display: block;
+    border: 1px solid var(--renk-kenarlik);
+    border-radius: var(--kose);
+    margin-bottom: var(--bosluk-m);
+    padding: var(--bosluk-s) var(--bosluk-m);
+    background: var(--renk-beyaz);
+  }
+  .tablo td {
+    display: block;
+    padding: 0.35rem 0;
+    border: none;
+  }
+  .tablo td.islemler {
+    display: flex;
+    margin-top: var(--bosluk-s);
+    padding-top: var(--bosluk-s);
+    border-top: 1px solid var(--renk-kenarlik);
+  }
+  .tablo td[data-baslik]::before {
+    content: attr(data-baslik) ": ";
+    font-weight: 700;
+    color: var(--renk-metin);
+  }
+}
+
