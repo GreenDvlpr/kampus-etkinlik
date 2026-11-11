@@ -5,3 +5,7 @@ desktop.ini
 .vscode/
 .idea/
 *.log
+
+# Bağımlılıklar ve ortam değişkenleri
+node_modules/
+.env
