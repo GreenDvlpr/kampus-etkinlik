@@ -2,7 +2,7 @@
 
 **Öğrenci Adı Soyadı:** Bekir Tuna Karamsal  
 **Öğrenci Numarası:** 2416501428  
-**Ders:** Web Tasarımı ve Programlama  
+**Ders:** Web Teknolojileri ve Programlama 
 
 ---
 
