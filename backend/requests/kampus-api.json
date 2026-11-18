@@ -2,12 +2,40 @@
   "info": {
     "_postman_id": "kampus-api-collection-sprint-8",
     "name": "Kampüs API",
-    "description": "Kampüs Etkinlikleri REST API - Sprint 8 (MongoDB ve Mongoose)",
+    "description": "Kampüs Etkinlikleri REST API - Sprint 8 (MongoDB ve Mongoose) - 15 Otomatik Test",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
+  "variable": [
+    {
+      "key": "eventId",
+      "value": "6afd5455d79f12e6db95ad7c",
+      "type": "string"
+    }
+  ],
   "item": [
     {
       "name": "GET 1 Health",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"1. Status kodu 200 olmalı\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"2. Status değeri 'ok' olmalı\", function () {",
+              "    const data = pm.response.json();",
+              "    pm.expect(data.status).to.eql(\"ok\");",
+              "});",
+              "pm.test(\"3. Öğrenci numarası doğru olmalı\", function () {",
+              "    const data = pm.response.json();",
+              "    pm.expect(data.student).to.eql(\"2416501428\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -23,6 +51,30 @@
     },
     {
       "name": "GET 2 Etkinlik listesi",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"4. Status kodu 200 olmalı\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"5. Dizi olarak etkinlikler dönmeli\", function () {",
+              "    const data = pm.response.json();",
+              "    pm.expect(data).to.be.an(\"array\");",
+              "    pm.expect(data.length).to.be.at.least(1);",
+              "});",
+              "pm.test(\"6. Etkinlikte _id ve createdAt bulunmalı\", function () {",
+              "    const data = pm.response.json();",
+              "    pm.expect(data[0]).to.have.property(\"_id\");",
+              "    pm.expect(data[0]).to.have.property(\"createdAt\");",
+              "    pm.collectionVariables.set(\"eventId\", data[0]._id);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -38,21 +90,65 @@
     },
     {
       "name": "GET 3 Tek etkinlik",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"7. Status kodu 200 olmalı\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"8. İstenen etkinliğin _id değeri eşleşmeli\", function () {",
+              "    const data = pm.response.json();",
+              "    const currentId = pm.collectionVariables.get(\"eventId\");",
+              "    if (currentId) {",
+              "        pm.expect(data._id).to.eql(currentId);",
+              "    } else {",
+              "        pm.expect(data).to.have.property(\"_id\");",
+              "    }",
+              "});",
+              "pm.test(\"9. Etkinlik başlık ve kategori içermeli\", function () {",
+              "    const data = pm.response.json();",
+              "    pm.expect(data).to.have.property(\"title\");",
+              "    pm.expect(data).to.have.property(\"category\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:3000/events/6afd50b326b9c77a9fbcb344",
+          "raw": "http://localhost:3000/events/{{eventId}}",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["events", "6afd50b326b9c77a9fbcb344"]
+          "path": ["events", "{{eventId}}"]
         }
       },
       "response": []
     },
     {
       "name": "GET 4 Olmayan etkinlik (404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"10. Status kodu 404 olmalı\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "pm.test(\"11. Hata mesajı 'Event not found' olmalı\", function () {",
+              "    const data = pm.response.json();",
+              "    pm.expect(data.error.message).to.eql(\"Event not found\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -68,6 +164,24 @@
     },
     {
       "name": "POST 5 Etkinlik oluştur (201)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"12. Status kodu 201 olmalı\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "pm.test(\"13. Yeni etkinlik _id ve doğru başlık içermeli\", function () {",
+              "    const data = pm.response.json();",
+              "    pm.expect(data).to.have.property(\"_id\");",
+              "    pm.expect(data.title).to.eql(\"Git Atölyesi\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "request": {
         "method": "POST",
         "header": [
@@ -97,6 +211,24 @@
     },
     {
       "name": "POST 6 Eksik veri (400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"14. Status kodu 400 olmalı\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "pm.test(\"15. Doğrulama hata mesajı dönmeli\", function () {",
+              "    const data = pm.response.json();",
+              "    pm.expect(data).to.have.property(\"error\");",
+              "    pm.expect(data.error.message).to.include(\"required\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "request": {
         "method": "POST",
         "header": [
