@@ -25,4 +25,12 @@ app.use((req, res) => {
   });
 });
 
+// Adım 8: Beklenmeyen hatalar için hata yakalayıcı middleware (4 parametre)
+app.use((err, req, res, next) => {
+  console.error(err.message);
+  res.status(500).json({
+    error: { message: "Server error" }
+  });
+});
+
 export default app;
