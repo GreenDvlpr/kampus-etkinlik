@@ -1,8 +1,8 @@
-# Kampüs Etkinlikleri Portalı (Sprint 7: Express ile REST API)
+# Kampüs Etkinlikleri Portalı (Sprint 8: MongoDB ve Mongoose)
 
 **Canlı Vercel Adresi (Frontend):** [https://bekirtunakaramsal-fronted.vercel.app](https://bekirtunakaramsal-fronted.vercel.app) *(ve [https://bekir-six.vercel.app](https://bekir-six.vercel.app))*  
 **GitHub Deposu:** [https://github.com/GreenDvlpr/kampus-etkinlik](https://github.com/GreenDvlpr/kampus-etkinlik)  
-**Git Etiketleri (Tags):** `sprint-07`, `frontend`, `sprint-06`, `sprint-05`, `sprint-04`, `sprint-03`, `sprint-02`, `sprint-01`  
+**Git Etiketleri (Tags):** `sprint-08`, `sprint-07`, `frontend`, `sprint-06`, `sprint-05`, `sprint-04`, `sprint-03`, `sprint-02`, `sprint-01`  
 
 **Öğrenci Adı Soyadı:** Bekir Tuna Karamsal  
 **Öğrenci Numarası:** 2416501428  
@@ -15,7 +15,7 @@
 
 Projede aynı depo içinde iki bağımsız uygulama yer almaktadır:
 1. **Frontend:** React + Vite (localhost:5173)
-2. **Backend:** Node.js + Express REST API (localhost:3000)
+2. **Backend:** Node.js + Express + Mongoose REST API (localhost:3000)
 
 ### 1. Frontend Çalıştırma
 ```bash
@@ -28,7 +28,8 @@ npm run dev
 ```bash
 cd backend
 npm install
-npm run dev
+npm run seed     # Veritabanını 6 örnek etkinlikle sıfırlayıp doldurur
+npm run dev      # Sunucuyu izleme modunda başlatır
 ```
 
 ---
@@ -37,13 +38,10 @@ npm run dev
 
 ```text
 kampus-etkinlik/
-├── frontend/                        # React + Vite Tek Sayfa Uygulaması
+├── frontend/                        # React + Vite Tek Sayfa Uygulaması (değişmedi)
 │   ├── public/
 │   ├── src/
-│   │   ├── components/
-│   │   │   ├── layout/ (Header, Navigation, Footer)
-│   │   │   ├── events/ (EventCard, EventList, EventFilter, EventDetail)
-│   │   │   └── forms/ (EventForm)
+│   │   ├── components/ (layout, events, forms)
 │   │   ├── context/ (EventsContext.tsx)
 │   │   ├── pages/ (10 sayfa bileşeni)
 │   │   ├── data/ (events.ts)
@@ -51,21 +49,26 @@ kampus-etkinlik/
 │   │   ├── utils/ (filter-events, format-date, validate-event)
 │   │   ├── App.css, App.tsx, main.tsx
 │   ├── package.json, vite.config.ts, vercel.json
-├── backend/                         # Node.js + Express REST API (Sprint 7)
+├── backend/                         # Node.js + Express + MongoDB REST API (Sprint 8)
 │   ├── src/
-│   │   ├── app.js                   # Express yapılandırması, CORS, middleware, health
-│   │   ├── server.js                # Sunucu başlatıcı ve port dinleyici
-│   │   ├── routes/
-│   │   │   └── event-routes.js      # REST API route tanımları
+│   │   ├── app.js                   # Express, CORS, middleware, /health, 404, hata yakalayıcı
+│   │   ├── server.js                # Veritabanı bağlantısı ve port dinleme
+│   │   ├── config/
+│   │   │   └── database.js          # Mongoose Atlas/yerel bağlantı modülü
+│   │   ├── models/
+│   │   │   └── event-model.js       # Mongoose Schema & Event modeli (kısıtlar ve timestamps)
 │   │   ├── controllers/
-│   │   │   └── event-controller.js  # İş mantığı (getEvents, getEventById, createEvent)
-│   │   └── data/
-│   │       └── events.js            # Bellek içi özgün 6 etkinlik kaydı
+│   │   │   └── event-controller.js  # İş mantığı (Event.find, findById, create, isValidObjectId)
+│   │   ├── routes/
+│   │   │   └── event-routes.js      # REST API route yönlendirmeleri
+│   │   ├── data/
+│   │   │   └── seed-events.js       # 6 adet özgün başlangıç etkinlik verisi
+│   │   └── seed.js                  # deleteMany ve insertMany ile veritabanı tohumlama
 │   ├── requests/
 │   │   └── kampus-api.json          # Postman v2.1 6 adet test isteği koleksiyonu
-│   ├── .env.example                 # Ortam değişkenleri şablonu (PORT=3000)
-│   ├── .gitignore                   # node_modules/ ve .env koruması
-│   ├── package.json                 # Backend bağımlılıkları (express, cors, dotenv)
+│   ├── .env.example                 # Ortam değişkenleri şablonu (PORT=3000, MONGODB_URI)
+│   ├── .gitignore                   # node_modules/ ve .env koruması (şifre sızmasını önler)
+│   ├── package.json                 # express, cors, dotenv, mongoose, scriptler (dev, start, seed)
 │   └── README.md                    # REST API sözleşmesi ve çalıştırma kılavuzu
 ├── .gitignore
 ├── README.md
@@ -74,20 +77,20 @@ kampus-etkinlik/
 
 ---
 
-## 📑 Backend REST API Sözleşmesi (Sprint 7)
+## 📑 Backend REST API Sözleşmesi (Sprint 8)
 
 | Method | Endpoint | Amaç | Başarılı | Hata |
 |---|---|---|---|---|
 | **GET** | `/health` | Sağlık kontrolü ve öğrenci no doğrulama | 200 OK | — |
-| **GET** | `/events` | Tüm etkinliklerin listesi (isteğe bağlı `?category=...`) | 200 OK | — |
-| **GET** | `/events/:id` | Belirtilen ID'ye ait etkinlik detayı | 200 OK | 404 Not Found |
-| **POST** | `/events` | Yeni etkinlik ekleme | 201 Created | 400 Bad Request |
+| **GET** | `/events` | MongoDB'deki tüm etkinliklerin listesi (`?category=...` ile filtreli) | 200 OK | — |
+| **GET** | `/events/:id` | Belirtilen MongoDB `_id`'sine sahip tekil etkinlik | 200 OK | 404 Not Found |
+| **POST** | `/events` | Yeni etkinlik ekleme (Schema doğrulama kontrollü) | 201 Created | 400 Bad Request |
 
 - **Öğrenci Doğrulama:** `GET /health` yanıtı:
   ```json
   {
     "status": "ok",
-    "time": "2026-11-11T08:17:13.707Z",
+    "time": "2026-11-18T07:16:04.008Z",
     "student": "2416501428"
   }
   ```
@@ -102,17 +105,15 @@ kampus-etkinlik/
 
 ---
 
-## ✅ Sprint 7 Teslim Kontrol Listesi
+## ✅ Sprint 8 Teslim Kontrol Listesi
 
-- [x] **1. Backend aynı backend/ klasöründe:** Proje kökünde `backend/` altında yapılandırıldı.
-- [x] **2. npm install + npm run dev hatasız çalışıyor:** Bağımlılıklar ve dev betiği (`node --watch src/server.js`) hazır.
-- [x] **3. Port .env'den okunuyor, .env.example var:** `process.env.PORT || 3000` ile okunur, `.env.example` mevcut.
-- [x] **4. .env ve node_modules GitHub'da yok:** `.gitignore` ile engellendi, git status temiz.
-- [x] **5. Route ve controller ayrı dosyalarda:** `event-routes.js` ve `event-controller.js` ayrıldı.
-- [x] **6. En az 5 commit, adım adım atılmış:** Adım adım commit'ler oluşturuldu.
-- [x] **7. GET /health JSON'unda student = senin öğrenci numaran:** `"student": "2416501428"` döner.
-- [x] **8. data/events.js'te kendi 6 etkinliğin:** Başlık, yer ve açıklamalar özgün olarak tanımlandı.
-- [x] **9. GET /events ve GET /events/:id çalışıyor; olmayan id 404:** Tüm testler geçti.
-- [x] **10. POST /events 201; eksik veri 400:** Doğrulama ve oluşturma mantığı çalışıyor.
-- [x] **11. backend/README.md'de REST sözleşmesi:** Tablo, çalıştırma komutları ve durum kodları belgelendi.
-- [x] **12. 6 istek collection olarak backend/requests/kampus-api.json'da:** Postman v2.1 koleksiyonu eklendi.
+- [x] **Ön Şart 1:** GET /health'te student = `2416501428` (Öğrenci numarası tam eşleşir).
+- [x] **Ön Şart 2:** Git geçmişinde gerçek Atlas adresi veya şifresi yok.
+- [x] **Ön Şart 3:** `.env` ve `node_modules` GitHub'da yok (`.gitignore` ile engellendi).
+- [x] **Madde 1:** Temiz indirmede `npm install` + `npm run dev` hatasız çalışıyor.
+- [x] **Madde 2:** Bağlantı `src/config/database.js` içinde ayrı modülde, URI `.env`'den okunuyor, `.env.example` mevcut.
+- [x] **Madde 3:** Schema'da `required`, `trim`, `timestamps` ve kısıtlar (`minlength`, `enum`, `min`) tanımlı.
+- [x] **Madde 4:** `npm run seed` 6 kayıt ekliyor, iki kez çalıştırıldığında da 6 kayıt kalıyor (`deleteMany` + `insertMany`).
+- [x] **Madde 5:** GET /events ve GET /events/:id MongoDB'den okuyor; olmayan ve geçersiz id için 404 dönüyor (500 değil).
+- [x] **Madde 6:** POST 201 Created dönüyor; eksik veride 400 Bad Request dönüyor ve sunucu çökmüyor (hata middleware'i).
+- [x] **Madde 7:** Sunucu yeniden başlayınca POST ile eklenen kayıt kalıcı kalıyor.
